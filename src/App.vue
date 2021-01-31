@@ -1,17 +1,25 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <Instagram />
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Instagram from './components/Instagram.vue'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    Instagram
+  },
+  metaInfo() {
+    return { 
+      title: "Instagram image parse",
+      meta: [
+        { name: 'description', content:  'Parse Instagram for my photos'},  
+        {name: 'robots', content: 'noindex,nofollow'} 
+      ]
+    }
   }
 }
 </script>
