@@ -1,4 +1,5 @@
-# hello-world
+# instagram-parse
+Ask user for access to Instagram, parse through their feed and pull photos
 
 ## Project setup
 ```
