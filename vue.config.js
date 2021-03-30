@@ -1,6 +1,9 @@
+const fs = require('fs');
+
 module.exports = {
   publicPath: "./",
   devServer: { 
-    https: true 
-  }
+    https: true
+  },
+  //public: 'https://localhost:8080'
 }

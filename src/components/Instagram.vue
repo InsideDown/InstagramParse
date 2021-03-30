@@ -1,5 +1,6 @@
 <template>
   <div class="container">
+    testing
     <button type="button" @click="getInstagramPermissions()" v-if="instagramAccessToken === ''">
       Get my Instagram feed
     </button>
@@ -42,7 +43,7 @@ export default {
       clientID: "",
       clientSecret:"",
       scope: "user_profile,user_media",
-      redirectURL: "https://localhost:8080/",//"https://insidedown.com/instagram/",
+      redirectURL: "https://insidedown.com/instagram/", //"https://localhost:8080/",//
       instagramCode:"",
       instagramAccessToken:"",
       instagramUserID:"",
@@ -50,6 +51,30 @@ export default {
     }
   },
   methods: {
+    getCircleData() {
+      const accessToken = "JyViZPvXL1wpztp5agPHfHq5";
+      //not sure if these will need to be hard coded or not
+      const communityID = "6607";
+      const spaceID = "58962";
+
+      //https://MY-COMMUNITY-URL.circle.so/api/v1/posts?community_id=5&space_id=15
+
+      //let urlStr = `https://app.circle.so/api/v1/posts?community_id=${communityID}&space_id=${spaceID}`;
+      let urlStr = `https://kitchen.circle.so/api/v1/posts?community_id=${communityID}&space_id=${spaceID}`;
+      console.log("get circle data called");
+      console.log(urlStr);
+      fetch(urlStr, {
+        headers: new Headers({
+          'Authorization': 'Token ' + accessToken,
+          //'Content-Type': 'text/plain'
+        })
+      })
+        .then(response => {
+          console.log("response received");
+          console.log(response.json);
+        }
+      );
+    },
     getInstagramPermissions() {
       let urlStr = "https://api.instagram.com/oauth/authorize?client_id=" +
       this.clientID + 
@@ -121,6 +146,7 @@ export default {
     this.clientID = process.env.VUE_APP_CLIENT_ID;
     this.clientSecret = process.env.VUE_APP_CLIENT_SECRET;
     this.checkURLForCode();
+    //this.getCircleData();
   }
 }
 </script>
